@@ -1,0 +1,48 @@
+﻿@using Models.Utilidades
+
+<link href="~/lib/sweetalert2/sweetalert2.css" rel="stylesheet" />
+<script src="~/lib/sweetalert2/sweetalert2.all.min.js"></script>
+
+@if (TempData[DS.Exitosa] != null)
+{
+    <script type="text/javascript">
+
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer
+                toast.onmouseleave = Swal.resumeTimer
+            }
+        });
+
+        Toast.fire({
+            icon: "success",
+            title: '@TempData[DS.Exitosa]'
+        });
+
+    </script>
+}
+
+@if (TempData[DS.Error] != null)
+{
+    <script type="text/javascript">
+
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true
+        });
+
+        Toast.fire({
+            icon: "error",
+            title: '@TempData[DS.Error]'
+        });
+
+    </script>
+}

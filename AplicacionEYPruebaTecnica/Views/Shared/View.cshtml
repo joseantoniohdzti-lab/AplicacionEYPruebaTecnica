@@ -1,0 +1,14 @@
+﻿@model Models.PartialViewModelsDtos.BotonAgregarVm
+@{
+    var titulo = "Agregar " + Model.Title;
+}
+
+<div class="row no-gutters align-items-center text-end" id="seccionPartial">
+    <a class="btn btn-primary btn-icon-split ">
+        <span class="icon text-white-50">
+            <i class="fas fa-plus"></i>
+        </span>
+        <span class="text">@titulo</span>
+    </a>
+</div>
+

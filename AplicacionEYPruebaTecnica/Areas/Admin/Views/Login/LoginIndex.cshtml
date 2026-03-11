@@ -1,0 +1,96 @@
+﻿@model Models.ViewModels.LoginVM
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login</title>
+
+
+
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" />
+
+    <link href="~/css/login.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-content">
+                <div class="logo-container text-center">
+                    <img src="" alt="Logo" class="logo" asp-append-version="true" />
+                </div>
+
+                <div class="text-center mb-4">
+                    <h1 class="h4 text-gray-900 mb-2">Acceso al sistema</h1>
+                    <p class="text-muted">Ingresa tus credenciales para continuar</p>
+                </div>
+
+                <form id="account" method="post" asp-route-returnUrl="@Model.ReturnUrl">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                    <!-- UsuarioId -->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fas fa-user"></i>
+                            </span>
+                            <input asp-for="UserName"
+                                   class="form-control"
+                                   autocomplete="username"
+                                   aria-required="true"
+                                   placeholder="Usuario" />
+                        </div>
+                        <span asp-validation-for="UserName" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <input asp-for="Password"
+                                   type="password"
+                                   class="form-control"
+                                   autocomplete="current-password"
+                                   aria-required="true"
+                                   placeholder="Contraseña" />
+                        </div>
+                        <span asp-validation-for="Password" class="text-danger small"></span>
+                    </div>
+
+                    <!-- RememberMe -->
+                    <div class="form-group mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" asp-for="RememberMe" />
+                            <label class="form-check-label" asp-for="RememberMe">Recordarme</label>
+                        </div>
+                    </div>
+
+                    <button id="login-submit" type="submit" class="btn btn-primary w-100 mb-3">
+                        Ingresar
+                    </button>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap bundle -->
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/js/loginscript.js"></script>
+
+    <partial name="_ValidationScriptsPartial" />
+</body>
+</html>

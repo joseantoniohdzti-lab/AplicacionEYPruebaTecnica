@@ -1,0 +1,57 @@
+﻿@using Models.EntidadesDtos
+@model UsuarioDto
+
+<div class="modal fade" id="idModalUsuarios" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" id="idFormUsers">
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <input type="hidden" asp-for="Id" id="Id" />
+
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <label for="idNombre" class="col-form-label">Nombre Completo:</label>
+                            <input type="text" asp-for="NombreCompleto" class="form-control" id="idNombre">
+                            <span asp-validation-for="NombreCompleto" class="text-danger"></span>
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="idUserName" class="col-form-label">Nombre Usuario:</label>
+                            <input type="text" asp-for="UserName" class="form-control" id="idUserName">
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="mb-3" id="SeccionAgregar">
+                            <label for="idPassword" class="col-form-label">Contraseña:</label>
+                            <input type="password" asp-for="Password" class="form-control" id="idPassword">
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="idCorreo" class="col-form-label">Correo:</label>
+                            <input type="email" asp-for="Correo" class="form-control" id="idCorreo">
+                            <span asp-validation-for="Correo" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" asp-for="Estatus" class="form-check-input" id="idEstatus">
+                        <label for="idEstatus" class="form-check-label">Activo</label>
+                        <span asp-validation-for="Estatus" class="text-danger"></span>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success" id="idGuardar">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>

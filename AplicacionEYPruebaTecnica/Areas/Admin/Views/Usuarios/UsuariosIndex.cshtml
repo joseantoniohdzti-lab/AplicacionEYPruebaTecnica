@@ -1,0 +1,129 @@
+﻿@using Models.PartialViewModelsDtos
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var txt = "Usuarios.";
+    var titulo = "Administración " + txt;
+
+    BotonAgregarVm BotonAgregar = new BotonAgregarVm()
+    {
+        Href = "UsuariosUpsert",
+        Title = txt
+    };
+
+}
+
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="col-12 mb-4">
+        <div class="d-sm-flex align-items-center justify-content-between mb-2">
+            <h1 class="h3 mb-0 text-gray-800">@titulo</h1>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <!-- Statistics Cards -->
+        <div class="col-xl-4 col-md-6 mb-4">
+            <div class="card border-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                @("Total " + txt)
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="txtTotal">Cargando...</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa-solid fa-users fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-4 col-md-6 mb-4">
+            <div class="card border-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Usuarios Habilitados
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="idUsuariHabilitado">0</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa-solid fa-user-check fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-4 col-md-6 mb-4">
+            <div class="card border-danger shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Usuarios InHabilitados
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="idUsuariInHabilitado">0</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa-solid fa-user-slash fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="card shadow mb-4 border-left-primary">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-list mr-2"></i>@("Lista " + txt)</h6>
+                <partial name="_BotonAgregar" model="@BotonAgregar" />
+            </div>
+            <div class="card-body">
+
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover" id="TblUsuario" width="100%" cellspacing="0">
+                        <thead class="table-dark">
+                            <tr class="text-center">
+                                <th>Acciones</th>
+                                <th>Nombre</th>
+                                <th>Usuario</th>
+                                <th>Email</th>
+                                <th>Activo</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    @* modal Registro *@
+
+    <partial name="~/Views/Modales/_ModalCrudUsuarios.cshtml" />
+    <partial name="~/Views/Modales/_ModalPassword.cshtml" />
+
+</div>
+
+
+
+@section Scripts {
+
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/postajaxglobalscript.js" asp-append-version="true"></script>
+    <script src="~/js/lenguajedatatablescript.js" asp-append-version="true"></script>
+
+    <script src="~/js/usuariodatatablesscript.js" asp-append-version="true"></script>
+    <script src="~/js/usuariosindexscript.js" asp-append-version="true"></script>
+
+    <script src="~/js/llenardashboardusuarisoscript.js" asp-append-version="true"></script>
+
+    <script src="~/js/deleteglobalscript.js" asp-append-version="true"></script>
+    <script src="~/js/readyscript.js" asp-append-version="true"></script>
+}
+
+
