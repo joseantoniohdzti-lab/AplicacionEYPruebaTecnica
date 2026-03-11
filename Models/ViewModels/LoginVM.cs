@@ -9,6 +9,8 @@ namespace Models.ViewModels
     {
         [Required(ErrorMessage = "El Usuario es requerido")]
         [Display(Name = "Usuario")]
+        [RegularExpression(@"^[^,:?""<>@{;.%¡!°¬=¿}#/\|]*$", ErrorMessage = "Caracter especial No Permitido.")]
+        [MaxLength(20, ErrorMessage = "El Maximo de Caracteres Permitidos es de 20.")]
         public string? UserName { get; set; }
 
         [Required(ErrorMessage = "La contraseña es requerida")]
